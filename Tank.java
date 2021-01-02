@@ -5,6 +5,7 @@ public class Tank extends JFrame {
     private static final long serialVersionUID = 1L;
 
     JPanel panel = new JPanel(); 
+    JLabel label = new JLabel(); 
 
     public Tank(){
         setTitle("Tank Game"); 
@@ -13,6 +14,10 @@ public class Tank extends JFrame {
 
         panel.setBackground(Color.LIGHT_GRAY); 
 
+        ImageIcon icon = new ImageIcon("tankIMG.png"); 
+        label.setIcon(icon); 
+
+        panel.add(label); 
 
         add(panel); 
         setVisible(true); 
