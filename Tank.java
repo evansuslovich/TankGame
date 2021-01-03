@@ -17,17 +17,17 @@ public class Tank extends JFrame implements KeyListener{
    private ImageIcon down = new ImageIcon("tankDOWN.png"); ; 
 
     public Tank(){
+        label = new JLabel(up); 
+        label.setBounds(x,y,30,30); 
+
+
         setTitle("Tank Game"); 
         setSize(400,400); 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         addKeyListener(this);
-
-
-        label = new JLabel(); 
-        label.setBounds(x,y,30,30); 
-        rotateImage(lastDirection); 
-
         add(label); 
+
+
         setVisible(true); 
     }
 
@@ -91,7 +91,7 @@ public class Tank extends JFrame implements KeyListener{
 
     }
 
-
+    /*
     public void rotateImage(int key){
         switch(key){
             case(KeyEvent.VK_A):
@@ -119,6 +119,7 @@ public class Tank extends JFrame implements KeyListener{
                 break;          
         }
     }
+    */ 
     
 
     public static void main(String[] args){
