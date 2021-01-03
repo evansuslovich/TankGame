@@ -48,38 +48,44 @@ public class Tank extends JFrame implements KeyListener{
 
         if(key ==  KeyEvent.VK_LEFT){
             x-=10; 
-            rotateImage(lastDirection);
+            //rotateImage(lastDirection);
             label.setLocation(x,y); 
         }
         if(key ==  KeyEvent.VK_UP){
             y-=10; 
-            rotateImage(lastDirection);
+            //rotateImage(lastDirection);
             label.setLocation(x,y); 
         }
         if(key ==  KeyEvent.VK_RIGHT){
             x+=10; 
-            rotateImage(lastDirection);
+            //rotateImage(lastDirection);
             label.setLocation(x,y); 
         }
         if( key ==  KeyEvent.VK_DOWN){
             y+=10;
-            rotateImage(lastDirection);
+            //rotateImage(lastDirection);
             label.setLocation(x,y); 
         }
 
         // Rotate the TANK 
 
         if(key == KeyEvent.VK_A){
-            rotateImage(KeyEvent.VK_A);
+            //rotateImage(KeyEvent.VK_A);
+            label.setIcon(left);
         }
         if(key == KeyEvent.VK_W){
-            rotateImage(KeyEvent.VK_W);
+            //rotateImage(KeyEvent.VK_W);
+            label.setIcon(up);
+
         }
         if(key == KeyEvent.VK_D){
-            rotateImage(KeyEvent.VK_D);
+            //rotateImage(KeyEvent.VK_D);
+            label.setIcon(right);
+
         }
         if(key == KeyEvent.VK_S){
-            rotateImage(KeyEvent.VK_S);
+            //rotateImage(KeyEvent.VK_S);
+            label.setIcon(down);
         }
 
 
