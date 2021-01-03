@@ -9,6 +9,8 @@ public class Tank extends JFrame implements KeyListener{
    private int x = 0; 
    private int y = 0; 
 
+   private int lastDirection = KeyEvent.VK_W; 
+
    private ImageIcon left = new ImageIcon("tankLEFT.png"); 
    private ImageIcon up = new ImageIcon("tankUP.png"); ; 
    private ImageIcon right = new ImageIcon("tankRIGHT.png"); ; 
@@ -23,7 +25,7 @@ public class Tank extends JFrame implements KeyListener{
 
         label = new JLabel(); 
         label.setBounds(x,y,30,30); 
-        rotateImage(0); 
+        rotateImage(lastDirection); 
 
         add(label); 
         setVisible(true); 
@@ -46,18 +48,22 @@ public class Tank extends JFrame implements KeyListener{
 
         if(key ==  KeyEvent.VK_LEFT){
             x-=10; 
+            rotateImage(lastDirection);
             label.setLocation(x,y); 
         }
         if(key ==  KeyEvent.VK_UP){
             y-=10; 
+            rotateImage(lastDirection);
             label.setLocation(x,y); 
         }
         if(key ==  KeyEvent.VK_RIGHT){
             x+=10; 
+            rotateImage(lastDirection);
             label.setLocation(x,y); 
         }
         if( key ==  KeyEvent.VK_DOWN){
             y+=10;
+            rotateImage(lastDirection);
             label.setLocation(x,y); 
         }
 
@@ -79,27 +85,32 @@ public class Tank extends JFrame implements KeyListener{
 
     }
 
+
     public void rotateImage(int key){
         switch(key){
-            case(0): 
-                label.setIcon(up); 
-                break; 
-
             case(KeyEvent.VK_A):
+                label.setLocation(x,y);
                 label.setIcon(left);
+                lastDirection = KeyEvent.VK_A; 
                 break; 
 
             case(KeyEvent.VK_W):
+                label.setLocation(x,y); 
                 label.setIcon(up);
+                lastDirection = KeyEvent.VK_W; 
                 break; 
 
             case(KeyEvent.VK_D):
                 label.setIcon(right);
+                label.setLocation(x,y); 
+                lastDirection = KeyEvent.VK_D; 
                 break; 
 
             case(KeyEvent.VK_S):
                 label.setIcon(down);
-                break; 
+                label.setLocation(x,y); 
+                lastDirection = KeyEvent.VK_S; 
+                break;          
         }
     }
     
