@@ -9,6 +9,11 @@ public class Tank extends JFrame implements KeyListener{
    private int x = 0; 
    private int y = 0; 
 
+   private ImageIcon left = new ImageIcon("tankLEFT.png"); 
+   private ImageIcon up = new ImageIcon("tankUP.png"); ; 
+   private ImageIcon right = new ImageIcon("tankRIGHT.png"); ; 
+   private ImageIcon down = new ImageIcon("tankDOWN.png"); ; 
+
     public Tank(){
         setTitle("Tank Game"); 
         setSize(400,400); 
@@ -16,8 +21,9 @@ public class Tank extends JFrame implements KeyListener{
         addKeyListener(this);
 
 
-        label = new JLabel(new ImageIcon("tankIMG.png")); 
+        label = new JLabel(); 
         label.setBounds(x,y,30,30); 
+        rotateImage(0); 
 
         add(label); 
         setVisible(true); 
@@ -36,24 +42,66 @@ public class Tank extends JFrame implements KeyListener{
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode(); 
 
-        if((key == KeyEvent.VK_A || key ==  KeyEvent.VK_LEFT)){
+        // Move the TANK 
+
+        if(key ==  KeyEvent.VK_LEFT){
             x-=10; 
             label.setLocation(x,y); 
         }
-        if((key == KeyEvent.VK_W || key ==  KeyEvent.VK_UP)){
+        if(key ==  KeyEvent.VK_UP){
             y-=10; 
             label.setLocation(x,y); 
         }
-        if((key == KeyEvent.VK_D || key ==  KeyEvent.VK_RIGHT)){
+        if(key ==  KeyEvent.VK_RIGHT){
             x+=10; 
             label.setLocation(x,y); 
         }
-        if((key == KeyEvent.VK_S || key ==  KeyEvent.VK_DOWN)){
+        if( key ==  KeyEvent.VK_DOWN){
             y+=10;
             label.setLocation(x,y); 
         }
+
+        // Rotate the TANK 
+
+        if(key == KeyEvent.VK_A){
+            rotateImage(KeyEvent.VK_A);
+        }
+        if(key == KeyEvent.VK_W){
+            rotateImage(KeyEvent.VK_W);
+        }
+        if(key == KeyEvent.VK_D){
+            rotateImage(KeyEvent.VK_D);
+        }
+        if(key == KeyEvent.VK_S){
+            rotateImage(KeyEvent.VK_S);
+        }
+
+
     }
 
+    public void rotateImage(int key){
+        switch(key){
+            case(0): 
+                label.setIcon(up); 
+                break; 
+
+            case(KeyEvent.VK_A):
+                label.setIcon(left);
+                break; 
+
+            case(KeyEvent.VK_W):
+                label.setIcon(up);
+                break; 
+
+            case(KeyEvent.VK_D):
+                label.setIcon(right);
+                break; 
+
+            case(KeyEvent.VK_S):
+                label.setIcon(down);
+                break; 
+        }
+    }
     
 
     public static void main(String[] args){
