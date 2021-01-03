@@ -1,4 +1,3 @@
-import java.awt.*; 
 import java.awt.event.*; 
 import javax.swing.*; 
 
@@ -31,7 +30,6 @@ public class Key implements KeyListener{
 
     @Override
     public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
 
     }
 
@@ -59,7 +57,6 @@ public class Key implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
 
     }
 
