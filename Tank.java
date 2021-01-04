@@ -41,6 +41,7 @@ public class Tank extends JFrame implements KeyListener{
         int key = e.getKeyCode(); 
 
         if(key == KeyEvent.VK_A){
+            label.setVisible(false); 
             System.out.println(KeyEvent.VK_A); 
             label.setLocation(x,y); 
             label.setIcon(left);
@@ -84,8 +85,6 @@ public class Tank extends JFrame implements KeyListener{
             label.setLocation(x,y); 
 
         }
-
-
     }
 
 
