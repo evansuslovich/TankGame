@@ -15,20 +15,14 @@ public class Tank extends JFrame implements KeyListener{
    private ImageIcon right = new ImageIcon("tankRIGHT.png"); 
    private ImageIcon down = new ImageIcon("tankDOWN.png");
 
-   private ImageIcon lastDirection = up; 
-
-
     public Tank(){
         label = new JLabel(up); 
-        label.setBounds(x,y,30,30);
-
 
         setTitle("Tank Game"); 
         setSize(400,400); 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         addKeyListener(this);
         add(label); 
-
 
         setVisible(true); 
     }
@@ -38,8 +32,8 @@ public class Tank extends JFrame implements KeyListener{
         // does nothing 
     }
     @Override
-    public void keyReleased(KeyEvent e) {
-        // does nothing 
+    public void keyReleased(KeyEvent e){
+        
     }
 
     @Override
@@ -47,55 +41,53 @@ public class Tank extends JFrame implements KeyListener{
         int key = e.getKeyCode(); 
 
         if(key == KeyEvent.VK_A){
-            lastDirection = left; 
-            move(left,x,y); 
-        }
-        if(key == KeyEvent.VK_W){
-            lastDirection = up; 
-            move(up,x,y); 
-
+            System.out.println(KeyEvent.VK_A); 
+            label.setLocation(x,y); 
+            label.setIcon(left);
         }
         if(key == KeyEvent.VK_D){
-            lastDirection = right; 
-            move(right,x,y); 
-
+            System.out.println(KeyEvent.VK_D); 
+            label.setLocation(x,y); 
+            label.setIcon(right);
+        }
+        if(key == KeyEvent.VK_W){
+            System.out.println(KeyEvent.VK_W); 
+            label.setLocation(x,y); 
+            label.setIcon(up);
         }
         if(key == KeyEvent.VK_S){
-            lastDirection = down; 
-            move(down,x,y); 
+            System.out.println(KeyEvent.VK_S); 
+            label.setLocation(x,y); 
+            label.setIcon(down);
+ 
         }
 
-        // Move the TANK 
 
         if(key ==  KeyEvent.VK_LEFT){
             x-=10; 
-            move(lastDirection,x,y);
+            label.setLocation(x,y); 
+
         }
         if(key ==  KeyEvent.VK_UP){
             y-=10; 
-            move(lastDirection,x,y);
+            label.setLocation(x,y); 
+
         }
         if(key ==  KeyEvent.VK_RIGHT){
             x+=10; 
-            move(lastDirection,x,y);
+            label.setLocation(x,y); 
+
   
         }
         if( key ==  KeyEvent.VK_DOWN){
             y+=10;
-            move(lastDirection,x,y);
+            label.setLocation(x,y); 
+
         }
 
 
     }
 
-    public void move(ImageIcon img, int x, int y){
-        label.setIcon(img); 
-        label.setLocation(x,y); 
-        label.repaint(); 
-
-    }
-    
-    
 
     public static void main(String[] args){
         new Tank();  
