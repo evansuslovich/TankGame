@@ -9,16 +9,18 @@ public class Tank extends JFrame implements KeyListener{
    private int x = 0; 
    private int y = 0; 
 
-   private int lastDirection = KeyEvent.VK_W; 
 
    private ImageIcon left = new ImageIcon("tankLEFT.png"); 
-   private ImageIcon up = new ImageIcon("tankUP.png"); ; 
-   private ImageIcon right = new ImageIcon("tankRIGHT.png"); ; 
-   private ImageIcon down = new ImageIcon("tankDOWN.png"); ; 
+   private ImageIcon up = new ImageIcon("tankUP.png"); 
+   private ImageIcon right = new ImageIcon("tankRIGHT.png"); 
+   private ImageIcon down = new ImageIcon("tankDOWN.png");
+
+   private ImageIcon lastDirection = up; 
+
 
     public Tank(){
         label = new JLabel(up); 
-        label.setBounds(x,y,30,30); 
+        label.setBounds(x,y,30,30);
 
 
         setTitle("Tank Game"); 
@@ -44,82 +46,55 @@ public class Tank extends JFrame implements KeyListener{
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode(); 
 
+        if(key == KeyEvent.VK_A){
+            lastDirection = left; 
+            move(left,x,y); 
+        }
+        if(key == KeyEvent.VK_W){
+            lastDirection = up; 
+            move(up,x,y); 
+
+        }
+        if(key == KeyEvent.VK_D){
+            lastDirection = right; 
+            move(right,x,y); 
+
+        }
+        if(key == KeyEvent.VK_S){
+            lastDirection = down; 
+            move(down,x,y); 
+        }
+
         // Move the TANK 
 
         if(key ==  KeyEvent.VK_LEFT){
             x-=10; 
-            //rotateImage(lastDirection);
-            label.setLocation(x,y); 
+            move(lastDirection,x,y);
         }
         if(key ==  KeyEvent.VK_UP){
             y-=10; 
-            //rotateImage(lastDirection);
-            label.setLocation(x,y); 
+            move(lastDirection,x,y);
         }
         if(key ==  KeyEvent.VK_RIGHT){
             x+=10; 
-            //rotateImage(lastDirection);
-            label.setLocation(x,y); 
+            move(lastDirection,x,y);
+  
         }
         if( key ==  KeyEvent.VK_DOWN){
             y+=10;
-            //rotateImage(lastDirection);
-            label.setLocation(x,y); 
-        }
-
-        // Rotate the TANK 
-
-        if(key == KeyEvent.VK_A){
-            //rotateImage(KeyEvent.VK_A);
-            label.setIcon(left);
-        }
-        if(key == KeyEvent.VK_W){
-            //rotateImage(KeyEvent.VK_W);
-            label.setIcon(up);
-
-        }
-        if(key == KeyEvent.VK_D){
-            //rotateImage(KeyEvent.VK_D);
-            label.setIcon(right);
-
-        }
-        if(key == KeyEvent.VK_S){
-            //rotateImage(KeyEvent.VK_S);
-            label.setIcon(down);
+            move(lastDirection,x,y);
         }
 
 
     }
 
-    /*
-    public void rotateImage(int key){
-        switch(key){
-            case(KeyEvent.VK_A):
-                label.setLocation(x,y);
-                label.setIcon(left);
-                lastDirection = KeyEvent.VK_A; 
-                break; 
+    public void move(ImageIcon img, int x, int y){
+        label.setIcon(img); 
+        label.setLocation(x,y); 
+        label.repaint(); 
 
-            case(KeyEvent.VK_W):
-                label.setLocation(x,y); 
-                label.setIcon(up);
-                lastDirection = KeyEvent.VK_W; 
-                break; 
-
-            case(KeyEvent.VK_D):
-                label.setIcon(right);
-                label.setLocation(x,y); 
-                lastDirection = KeyEvent.VK_D; 
-                break; 
-
-            case(KeyEvent.VK_S):
-                label.setIcon(down);
-                label.setLocation(x,y); 
-                lastDirection = KeyEvent.VK_S; 
-                break;          
-        }
     }
-    */ 
+    
     
 
     public static void main(String[] args){
