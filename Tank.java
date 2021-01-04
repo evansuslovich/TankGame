@@ -4,7 +4,7 @@ import java.awt.event.*;
 public class Tank extends JFrame implements KeyListener{
     private static final long serialVersionUID = 1L;
 
-   private JLabel label; 
+    private JLabel label;
 
    private int x = 0; 
    private int y = 0; 
@@ -33,56 +33,53 @@ public class Tank extends JFrame implements KeyListener{
     }
     @Override
     public void keyReleased(KeyEvent e){
-        
+        // does nothing
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode(); 
+        
+        switch(key){
+            case KeyEvent.VK_A: 
+                label.setLocation(x,y); 
+                label.setIcon(left);
+                break;
 
-        if(key == KeyEvent.VK_A){
-            label.setVisible(false); 
-            System.out.println(KeyEvent.VK_A); 
-            label.setLocation(x,y); 
-            label.setIcon(left);
-        }
-        if(key == KeyEvent.VK_D){
-            System.out.println(KeyEvent.VK_D); 
-            label.setLocation(x,y); 
-            label.setIcon(right);
-        }
-        if(key == KeyEvent.VK_W){
-            System.out.println(KeyEvent.VK_W); 
-            label.setLocation(x,y); 
-            label.setIcon(up);
-        }
-        if(key == KeyEvent.VK_S){
-            System.out.println(KeyEvent.VK_S); 
-            label.setLocation(x,y); 
-            label.setIcon(down);
- 
-        }
+            case KeyEvent.VK_W: 
+                label.setLocation(x,y); 
+                label.setIcon(up);
+                break;
 
+            case KeyEvent.VK_D: 
+                label.setLocation(x,y); 
+                label.setIcon(right);
+                break;
 
-        if(key ==  KeyEvent.VK_LEFT){
-            x-=10; 
-            label.setLocation(x,y); 
+            case KeyEvent.VK_S:
+                label.setLocation(x,y); 
+                label.setIcon(down);
+                break;
 
-        }
-        if(key ==  KeyEvent.VK_UP){
-            y-=10; 
-            label.setLocation(x,y); 
+            case KeyEvent.VK_LEFT: 
+                x-=10; 
+                label.setLocation(x,y);
+                break; 
 
-        }
-        if(key ==  KeyEvent.VK_RIGHT){
-            x+=10; 
-            label.setLocation(x,y); 
+            case KeyEvent.VK_UP: 
+                y-=10; 
+                label.setLocation(x,y); 
+                break;
 
-  
-        }
-        if( key ==  KeyEvent.VK_DOWN){
-            y+=10;
-            label.setLocation(x,y); 
+            case KeyEvent.VK_RIGHT:
+                x+=10; 
+                label.setLocation(x,y); 
+                break;
+
+            case KeyEvent.VK_DOWN: 
+                y+=10; 
+                label.setLocation(x,y);
+                break; 
 
         }
     }
