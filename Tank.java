@@ -64,24 +64,33 @@ public class Tank extends JFrame implements KeyListener{
             case KeyEvent.VK_LEFT: 
                 x-=10; 
                 label.setLocation(x,y);
+                print();
                 break; 
 
             case KeyEvent.VK_UP: 
                 y-=10; 
                 label.setLocation(x,y); 
+                print();
                 break;
 
             case KeyEvent.VK_RIGHT:
                 x+=10; 
                 label.setLocation(x,y); 
+                print();
                 break;
 
             case KeyEvent.VK_DOWN: 
                 y+=10; 
                 label.setLocation(x,y);
+                print(); 
                 break; 
 
         }
+    }
+
+  
+    public void print(){
+        System.out.println(label.getLocation()); 
     }
 
 
